@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Major Scales</title>
+    <!-- Daily Programmer Challenge: https://www.reddit.com/r/dailyprogrammer/comments/7hhyin/20171204_challenge_343_easy_major_scales/-->
+  </head>
+  <body>
+  	<h1>Major Scales</h1>
+  	<h2>Sharps Only</h2>
+  	<form action=>
+  		<select id="note">
+  			<option value="C">C</option>
+  			<option value="C#">C#</option>
+  			<option value="D">D</option>
+  			<option value="D#">D#</option>
+  			<option value="E">E</option>
+  			<option value="F">F</option>
+  			<option value="F#">F#</option>
+  			<option value="G">G</option>
+  			<option value="G#">G#</option>
+  			<option value="A">A</option>
+  			<option value="A#">A#</option>
+  			<option value="B">B</option>
+  		</select>
+  		<select id="solfegeInput">
+  			<option value="Do">Do</option>
+  			<option value="Re">Re</option>
+  			<option value="Mi">Mi</option>
+  			<option value="Fa">Fa</option>
+  			<option value="So">So</option>
+  			<option value="La">La</option>
+  			<option value="Ti">Ti</option>
+  		</select>
+  		<input type="button" name="submit" id="sub" value="Submit">
+  	</form>
+  	<p id="output"></p>
+   <script>
+   		var solfegeArray = ["Do", "Re", "Mi", "Fa", "So", "La", "Ti"], 
+			major = [0, 2, 4, 5, 7, 9, 11],
+			chromatic = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
+			inputNote,
+			distance,
+			outputNote,
+			getNote,
+			noteIndex,
+			noteSubmit = document.getElementById("sub");
+
+		function getNote() {
+			inputNote = document.getElementById("note").value;
+			distance = major[solfegeArray.indexOf(document.getElementById("solfegeInput").value)];
+			noteIndex = chromatic.indexOf(inputNote)+distance;
+			outputNote = chromatic[noteIndex];
+			document.getElementById("output").innerHTML = outputNote;
+		}
+
+		noteSubmit.addEventListener('click', getNote);
+   </script>
+  </body>
+</html>
